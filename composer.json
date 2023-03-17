@@ -1,0 +1,19 @@
+{
+    "name": "xtend-laravel/feature-lunar-payment-gateways",
+    "description": "Lunar Payment Gateways",
+    "type": "xtend-feature",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "XtendLunar\\Features\\PaymentGateways\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Adam Lee",
+            "email": "adam@codelabx.ltd"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
