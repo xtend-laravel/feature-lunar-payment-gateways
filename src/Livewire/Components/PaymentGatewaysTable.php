@@ -42,10 +42,9 @@ class PaymentGatewaysTable extends Component implements Tables\Contracts\HasTabl
     protected function getTableActions(): array
     {
         return [
-            // Tables\Actions\ActionGroup::make([
-            //     Tables\Actions\RestoreAction::make(),
-            //     Tables\Actions\EditAction::make()->url(fn (Brand $record): string => route('hub.brands.show', ['brand' => $record])),
-            // ]),
+             Tables\Actions\ActionGroup::make([
+                 Tables\Actions\Action::make('Test Integration')->url(fn (PaymentGateway $record): string => route('hub.payment-gateway.show', ['paymentGateway' => $record])),
+             ]),
         ];
     }
 

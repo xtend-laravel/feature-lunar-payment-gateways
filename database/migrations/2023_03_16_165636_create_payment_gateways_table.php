@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create($this->prefix.'payment_gateways', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('driver');
             $table->text('description')->nullable();
             $table->tinyInteger('is_enabled')->default(1);
             $table->timestamps();

@@ -9,10 +9,16 @@ use Illuminate\Support\Facades\Event;
 use Livewire\Livewire;
 use Lunar\Hub\Facades\Menu;
 use XtendLunar\Features\PaymentGateways\Livewire\Components\PaymentGatewaysTable;
+use XtendLunar\Features\PaymentGateways\Models\PaymentGateway;
+use XtendLunar\Features\PaymentGateways\Policies\PaymentGatewayPolicy;
 
 class PaymentGatewaysProvider extends XtendFeatureProvider
 {
     use InteractsWithRestifyRepositories;
+
+    protected $policies = [
+        PaymentGateway::class => PaymentGatewayPolicy::class,
+    ];
 
     public function register(): void
     {
@@ -27,6 +33,16 @@ class PaymentGatewaysProvider extends XtendFeatureProvider
         Livewire::component('hub.components.payment-providers.table', PaymentGatewaysTable::class);
 
         $this->registerWithSidebarMenu();
+
+        // PaymentGateway::truncate();
+        // collect([
+        //     ['name' => 'PayPal', 'driver' => 'paypal'],
+        //     ['name' => 'Stripe', 'driver' => 'stripe'],
+        //     ['name' => 'Bank Transfer', 'driver' => 'bank-transfer'],
+        //     ['name' => 'Cash on Delivery', 'driver' => 'cod'],
+        // ])->each(function ($gateway) {
+        //     PaymentGateway::create($gateway);
+        // });
     }
 
     protected function registerWithSidebarMenu(): void

@@ -1,6 +1,6 @@
 <?php
 
-namespace XtendLunar\Addons\PaymentGateways\Restify\Presenters;
+namespace XtendLunar\Features\PaymentGateways\Restify\Presenters;
 
 use Binaryk\LaravelRestify\Http\Requests\RestifyRequest;
 use XtendLunar\Addons\RestifyApi\Restify\Contracts\Presentable;

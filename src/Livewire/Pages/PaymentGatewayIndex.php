@@ -7,7 +7,7 @@ use Livewire\Component;
 use Lunar\Hub\Http\Livewire\Traits\Notifies;
 use Lunar\Hub\Http\Livewire\Traits\WithLanguages;
 
-class PaymentGatewaysIndex extends Component
+class PaymentGatewayIndex extends Component
 {
     use Notifies;
     use WithLanguages;
@@ -16,7 +16,7 @@ class PaymentGatewaysIndex extends Component
     {
         return view('adminhub::livewire.pages.payment-gateways')
             ->layout('adminhub::layouts.app', [
-                'title' => __('Shipping Providers'),
+                'title' => __('Payment Providers'),
             ]);
     }
 }

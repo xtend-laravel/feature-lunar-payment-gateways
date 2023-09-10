@@ -15,10 +15,10 @@ class PaymentGatewaySeeder extends Seeder
     public function run()
     {
         collect([
-            ['name' => 'PayPal'],
-            ['name' => 'Stripe'],
-            ['name' => 'Bank Transfer'],
-            ['name' => 'Cash on Delivery'],
+            ['name' => 'PayPal', 'driver' => 'paypal'],
+            ['name' => 'Stripe', 'driver' => 'stripe'],
+            ['name' => 'Bank Transfer', 'driver' => 'bank-transfer'],
+            ['name' => 'Cash on Delivery', 'driver' => 'cod'],
         ])->each(function ($gateway) {
             PaymentGateway::create($gateway);
         });
