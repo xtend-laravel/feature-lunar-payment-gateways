@@ -32,7 +32,7 @@ class PaymentGatewaysProvider extends XtendFeatureProvider
     {
         Livewire::component('hub.components.payment-providers.table', PaymentGatewaysTable::class);
 
-        $this->registerWithSidebarMenu();
+        // $this->registerWithSidebarMenu();
 
         // PaymentGateway::truncate();
         // collect([
