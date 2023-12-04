@@ -22,10 +22,7 @@ class CreatePaymentAction extends Action
             ], 404);
         }
 
-        // @todo Get payment driver instance from payment gateway
-        $paymentGateway = $models->firstWhere(
-            fn ($model) => $model->id == $request->paymentGatewayId,
-        );
+        $paymentGateway = $models->firstWhere('driver', $request->paymentGateway);
 
         if (!$paymentGateway) {
             return response()->json([
@@ -35,18 +32,10 @@ class CreatePaymentAction extends Action
 
         /** @var AbstractPaymentGateway $paymentDriver */
         $paymentDriver = Payments::driver($paymentGateway->driver);
-
         $paymentDriver->cart($cart->calculate())->withData($request->all());
-        // @todo Optimise calculate() method takes too long to execute
 
-        try {
-            $paymentDriver->init();
-            $paymentRequest = $paymentDriver->create();
-        } catch (\Exception $e) {
-            return response()->json([
-                'error' => $e->getMessage(),
-            ], 422);
-        }
+        $paymentDriver->init();
+        $paymentRequest = $paymentDriver->create();
 
         return data([
             ...$paymentRequest,
