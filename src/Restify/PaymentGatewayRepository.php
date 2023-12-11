@@ -20,7 +20,7 @@ class PaymentGatewayRepository extends Repository
         return [
             CreatePaymentAction::new()->onlyOnIndex(),
             CapturePaymentAction::new()->onlyOnIndex(),
-            AuthorizePaymentAction::new()->onlyOnIndex(),
+            AuthorizePaymentAction::new()->onlyOnShow(),
         ];
     }
 }

@@ -12,11 +12,14 @@ use Xtend\Extensions\Lunar\Core\Models\Order;
 use XtendLunar\Addons\RestifyApi\Notifications\OrderCompletedAdminNotification;
 use XtendLunar\Addons\RestifyApi\Notifications\OrderFailedAdminNotification;
 use XtendLunar\Features\PaymentGateways\Base\AbstractPaymentGateway;
+use XtendLunar\Features\PaymentGateways\Models\PaymentGateway;
 
 class AuthorizePaymentAction extends Action
 {
-    public function handle(ActionRequest $request, Collection $models): JsonResponse
+    public function handle(ActionRequest $request, PaymentGateway $models): JsonResponse
     {
+        $paymentGateway = $models;
+
         /** @var Order $order */
         $order = Order::find($request->orderId);
         if (!$order) {
@@ -31,11 +34,11 @@ class AuthorizePaymentAction extends Action
             ], 404);
         }
 
-        if (!$paymentGateway = $models->firstWhere('driver', $request->paymentGateway)) {
-            return response()->json([
-                'error' => 'Payment gateway not valid',
-            ], 422);
-        }
+        // if (!$paymentGateway = $models->firstWhere('driver', $request->paymentGateway)) {
+        //     return response()->json([
+        //         'error' => 'Payment gateway not valid',
+        //     ], 422);
+        // }
 
         /** @var AbstractPaymentGateway $paymentDriver */
         $paymentDriver = Payments::driver($paymentGateway->driver);
