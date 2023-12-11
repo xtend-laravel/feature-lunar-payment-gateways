@@ -9,7 +9,7 @@ use XtendLunar\Features\PaymentGateways\Restify\Actions\AuthorizePaymentAction;
 
 class PaymentGatewayIpnController
 {
-    protected string $tempPassword = 'testpassword_lD9Cs28KM1INM36ZIZlppAn9t9BTX1Ax9t4MOrJFxGV9y';
+    protected string $tempPassword = 'Jx0hHSIcsE4YqR8VJXvJ1KG9IadumXusbI3rchic6XvDK';
 
     public function __invoke(Request $request, PaymentGateway $paymentGateway, AuthorizePaymentAction $action)
     {
