@@ -23,6 +23,7 @@ class PaymentGatewaysProvider extends XtendFeatureProvider
     public function register(): void
     {
         $this->loadRoutesFrom(__DIR__.'/../routes/hub.php');
+        $this->loadRoutesFrom(__DIR__.'/../routes/ipn.php');
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'adminhub');
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->loadRestifyFrom(__DIR__.'/Restify', __NAMESPACE__.'\\Restify\\');
