@@ -56,9 +56,9 @@ class AuthorizePaymentAction extends Action
             ], 422);
         }
 
-        $paymentStatus->success
-            ? $this->notifyPaymentSuccess($order)
-            : $this->notifyPaymentFailure($order);
+        // $paymentStatus->success
+        //     ? $this->notifyPaymentSuccess($order)
+        //     : $this->notifyPaymentFailure($order);
 
         return data([
             'paymentStatus' => $paymentStatus,
